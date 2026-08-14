@@ -6,7 +6,7 @@ public class sistemaVotacao {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static String main (String[] args) {
         System.out.println("Sistema de votação iniciado.");
 
         final int MAX_CANDIDATOS = 5;
@@ -57,5 +57,22 @@ public class sistemaVotacao {
         } while (opcao != 5);
 
         scanner.close();
+
+        int lerInteiro;
+        String mensagem = ""; {
+            while (true){
+                System.out.println(mensagem);
+
+                if (scanner.hasNextInt()){
+                    String valor = scanner.nextLine();
+                    scanner.nextLine();
+                    return valor;
+                }
+
+                System.out.println("Entrada inválida. Digite um número.");
+                scanner.nextLine();
+            }
+        }
+
     }
 }
