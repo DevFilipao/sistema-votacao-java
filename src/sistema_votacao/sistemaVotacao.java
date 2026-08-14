@@ -13,5 +13,16 @@ public class sistemaVotacao {
         final int MAX_CANDIDATOS = 5;
         final int TOTAL_TURMAS = 3;
         final int MAX_VOTANTES_POR_TURMA = 10;
+
+        int [] numeroCandidatos = new int[MAX_CANDIDATOS];
+        String[] nomesCandidatos = new String[MAX_CANDIDATOS];
+        int[] votosCandidatos = new int[MAX_CANDIDATOS];
+
+        int[][] votosPorTurma = new int[TOTAL_TURMAS][MAX_VOTANTES_POR_TURMA];
+
+        int[] quantidadeVotosTurma = new int[TOTAL_TURMAS];
+        int quantidadeCandidatos = 0;
+
+
     }
 }
