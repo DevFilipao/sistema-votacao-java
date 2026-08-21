@@ -81,10 +81,10 @@ public class sistemaVotacao {
         }
     }
 
-    static void cadastrarCandidatos() {
+    static int cadastrarCandidatos() {
         if (quantidadeCandidatos > 0) {
             System.out.println("Os candidatos já foram cadastrados.");
-            return;
+            return 0;
         }
 
         int quantidade;
@@ -136,5 +136,17 @@ public class sistemaVotacao {
         nomesCandidatos[i] = nome;
         votosCandidatos[i] = 0;
         quantidadeCandidatos++;
+
+        int buscarCandidato;{
+            int indiceEscontrado = -1;
+
+            for (i = 0; i < quantidadeCandidatos; i++){
+                if (numerosCandidatos[i] == numero){
+                    indiceEscontrado = i;
+                    break;
+                }
+            }
+            return indiceEscontrado;
+        }
     }
 }
