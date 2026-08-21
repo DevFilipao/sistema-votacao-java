@@ -99,9 +99,10 @@ public class sistemaVotacao {
 
         int[] numerosCandidatos = new int[5];
 
-        for (int i = 0; i < quantidade; i++) {
+        int i;
+        int numero = 0;
+        for (i = 0; i < quantidade; i++) {
 
-            int numero;
             boolean numeroRepetido;
 
             do {
@@ -120,6 +121,20 @@ public class sistemaVotacao {
 
             numerosCandidatos[i] = numero;
         }
+        String nome;
 
+        do {
+            System.out.print("Nome do candidato: ");
+            nome = scanner.nextLine().trim();
+
+            if (nome.isEmpty()) {
+                System.out.println("O nome não pode ficar vazio.");
+            }
+        } while (nome.isEmpty());
+
+        numerosCandidatos[i] = numero;
+        nomesCandidatos[i] = nome;
+        votosCandidatos[i] = 0;
+        quantidadeCandidatos++;
     }
 }
