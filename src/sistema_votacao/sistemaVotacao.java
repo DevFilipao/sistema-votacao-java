@@ -57,6 +57,15 @@ public class sistemaVotacao {
         scanner.close();
     }
 
+    private static void iniciarVotacao() {
+    }
+
+    private static void exibirMatrizVotos() {
+    }
+
+    private static void exibirResultado() {
+    }
+
     static int lerInteiro(String mensagem) {
         while (true) {
             System.out.print(mensagem);
@@ -88,74 +97,29 @@ public class sistemaVotacao {
             }
         } while (quantidade < 1 || quantidade > MAX_CANDIDATOS);
 
-        quantidadeCandidatos = quantidade;
+        int[] numerosCandidatos = new int[5];
 
-        for (int i = 0; i < quantidadeCandidatos; i++) {
-            System.out.print("Nome do candidato " + (i + 1) + ": ");
-            nomesCandidatos[i] = scanner.nextLine();
-        }
+        for (int i = 0; i < quantidade; i++) {
 
-        System.out.println("Candidatos cadastrados com sucesso.");
-    }
+            int numero;
+            boolean numeroRepetido;
 
-    static void iniciarVotacao() {
-        if (quantidadeCandidatos == 0) {
-            System.out.println("Cadastre os candidatos antes de iniciar a votação.");
-            return;
-        }
+            do {
+                numero = lerInteiro("Digite o número do candidato: ");
+                numeroRepetido = false;
 
-        for (int turma = 0; turma < TOTAL_TURMAS; turma++) {
-            System.out.println("\n--- Votação da turma " + (turma + 1) + " ---");
-
-            for (int v = 0; v < MAX_VOTANTES_POR_TURMA; v++) {
-                System.out.println("Candidatos:");
-                for (int c = 0; c < quantidadeCandidatos; c++) {
-                    System.out.println((c + 1) + " - " + nomesCandidatos[c]);
+                for (int j = 0; j < i; j++) {
+                    if (numerosCandidatos[j] == numero) {
+                        numeroRepetido = true;
+                        System.out.println("Esse número já foi utilizado.");
+                        break;
+                    }
                 }
 
-                int voto = lerInteiro("Votante " + (v + 1) + ", escolha o candidato: ");
+            } while (numeroRepetido);
 
-                if (voto < 1 || voto > quantidadeCandidatos) {
-                    System.out.println("Candidato inválido. Voto não computado.");
-                    v--;
-                    continue;
-                }
-                break;
-
-            }
+            numerosCandidatos[i] = numero;
         }
 
-        System.out.println("Votação encerrada.");
-    }
-
-    static void exibirResultado() {
-        if (quantidadeCandidatos == 0) {
-            System.out.println("Nenhum candidato cadastrado.");
-            return;
-        }
-
-        System.out.println("\n--- Resultado da votação ---");
-
-        int vencedor = 0;
-        for (int c = 0; c < quantidadeCandidatos; c++) {
-            System.out.println(nomesCandidatos[c] + ": " + votosCandidatos[c] + " voto(s)");
-            if (votosCandidatos[c] > votosCandidatos[vencedor]) {
-                vencedor = c;
-            }
-        }
-
-        System.out.println("Vencedor: " + nomesCandidatos[vencedor] + " com " + votosCandidatos[vencedor] + " voto(s)");
-    }
-
-    static void exibirMatrizVotos() {
-        System.out.println("\n--- Matriz de votos por turma ---");
-
-        for (int t = 0; t < TOTAL_TURMAS; t++) {
-            System.out.print("Turma " + (t + 1) + ": ");
-            for (int v = 0; v < MAX_VOTANTES_POR_TURMA; v++) {
-                System.out.print(votosPorTurma[t][v] + " ");
-            }
-            System.out.println();
-        }
     }
 }
